@@ -1,0 +1,7 @@
+# wild cards & common files
+.DS_Store
+*~
+*.swp
+
+# node install directory
+node_modules

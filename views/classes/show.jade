@@ -1,0 +1,14 @@
+h1 #{title} (#{class.name})
+
+ul#builder 
+	li 
+		ul.tree(id=class.common_tree.internal)
+			- for (var i in class.common_tree.talents)
+				li.talent(id=class.common_tree.talents[i].internal, 
+		          	class='rank_'+class.common_tree.talents[i].level + ' position_'+class.common_tree.talents[i].position) 
+					div.plus 
+					div.minus 
+					div.indicator
+						span.current
+						span.max class.common_tree.talents[i].levels.length()
+		

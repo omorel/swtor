@@ -1,0 +1,63 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #bfbfbf;
+}
+a {
+  color: #00B7FF;
+}
+ul.tree {
+  list-style-type: none;
+  position: relative;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  width: 310px;
+  height: 490px;
+  overflow: hidden;
+  background-image: url('../images/tree-bg-plain.png');
+}
+li.talent {
+  position: absolute;
+  padding: 0px;
+  margin: 0px;
+  width: 43px;
+  height: 43px;
+  background-color: red;
+}
+li.talent span {
+  display: none;
+}
+li.rank_0 {
+  top: 410px;
+}
+li.rank_1 {
+  top: 345px;
+}
+li.rank_2 {
+  top: 280px;
+}
+li.rank_3 {
+  top: 215px;
+}
+li.rank_4 {
+  top: 150px;
+}
+li.rank_5 {
+  top: 85px;
+}
+li.rank_6 {
+  top: 20px;
+}
+li.position_0 {
+  left: 30px;
+}
+li.position_1 {
+  left: 96px;
+}
+li.position_2 {
+  left: 162px;
+}
+li.position_3 {
+  left: 228px;
+}
