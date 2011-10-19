@@ -3,6 +3,29 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/javascripts/modernizr-2.0.6.js')    
     script(src='/javascripts/jquery-1.6.4.min.js')
     script(src='/javascripts/builder/builder.js')
+    script(type='text/javascript')
+      var data = !{JSON.stringify(data)};
+    script(type='text/javascript')
+      jQuery.noConflict()(function(){
+        var swtor = new SWTORHeroesBuilder(function(sw) {
+        }); 
+        
+        swtor._init_({ 
+          id: 'builder',
+          level: 50, 
+          talents_history: [],
+          talents: {}, 
+          points_max: 41, 
+          points_available: Number.NaN,
+          points_used: Number.NaN, 
+          points_by_tree: {}, 
+          advanced_class: data,
+        }); 
+        
+        swtor.enable_talents();			  
+        swtor.add_listeners();
+      });
   body!= body

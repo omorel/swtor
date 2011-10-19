@@ -1,98 +1,147 @@
-@color: #bfbfbf; 
-// Tree 
+// Imports 
+@import "/public/stylesheets/elements.less"; 
 
-@tree_width: 310px; 
-@tree_height: 490px; 
+@tree-width: 310px; 
+@tree-height: 490px; 
 
 // Talents
-@talent_width: 43px; 
-@talent_height: 43px; 
+@talent-width: 43px; 
+@talent-height: 43px; 
 
+@talent-inactive-color: #2661a3;
+@talent-active-color: lighten(@talent-inactive-color, 25%);
+@talent-disabled-color: darken(@talent-inactive-color, 25%);
 
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-	color: @color;
+  font: 8pt Verdana;
 }
 
-a {
-  color: #00B7FF;
+ul#builder {
+	
+	li {
+		float: left;
+		margin-left: 20px;
+	}
+	
+	ul.tree {
+		list-style-type: none;
+		position: relative;
+		float: left; 
+		margin: 0px; 
+		padding: 0px; 
+		width: @tree-width;
+		height: @tree-height;
+		overflow: hidden;
+		background-image: url('../images/tree-bg-plain.png'); 
+		color: #ffffff;
+	
+		li.talent {
+			font-size: 11px;
+			position: absolute; 
+			padding: 0px; 
+			margin: 0px;
+			width: @talent-width; 
+			height: @talent-height; 
+			cursor: pointer;		
+			.rounded();
+
+			span {
+			}
+		
+			&:hover {
+				background-color: @talent-active-color;
+			}
+		
+			div.max-level {
+				position: absolute; 
+				top: @talent-height - 5px; 
+				right: 3px;
+				width: 19px; 
+				height: 16px;						
+				font-weight: bold; 
+				text-align: center; 
+				background-color: @talent-disabled-color;
+			}
+		
+			div.current-level {
+				position: absolute; 
+				top: @talent-height - 5px; 
+				left: 3px;
+				width: 18px; 			
+				height: 16px;
+				font-weight: bold; 				
+				text-align: center; 			
+				background-color: @talent-active-color; 		
+			}
+		}
+	
+		li.disabled {
+			.bordered(@talent-disabled-color, @talent-disabled-color, @talent-disabled-color, @talent-disabled-color); 
+			background: darken(@talent-disabled-color, 10%); 
+		}
+	
+		li.active {
+			.bordered(@talent-active-color, @talent-active-color, @talent-active-color, @talent-active-color); 
+			background: darken(@talent-active-color, 10%);		
+		}
+	
+		li.inactive {
+			.bordered(@talent-inactive-color, @talent-inactive-color, @talent-inactive-color, @talent-inactive-color); 
+			background: darken(@talent-inactive-color, 10%);			
+		}
+	
+		div.plus {
+		}
+
+		div.minus {
+		}	
+	
+
+
+		li.rank_0 {
+			top: 410px;
+		}
+
+		li.rank_1 {
+			top: 345px;
+		}
+
+		li.rank_2 {
+			top: 280px;
+		}
+
+		li.rank_3 {
+			top: 215px;
+		}
+
+		li.rank_4 {
+			top: 150px;
+		}
+
+		li.rank_5 {
+			top: 85px;
+		}
+
+		li.rank_6 {
+			top: 20px;
+		}
+
+		li.position_0 {
+			left: 30px; 
+		}
+
+		li.position_1 {
+			left: 96px; 
+		}
+
+		li.position_2 {
+			left: 162px; 
+		}
+
+		li.position_3 {
+			left: 228px; 
+		}	
+	}
+
 }
-
-ul.tree {
-	list-style-type: none;
-	position: relative;
-	float: left; 
-	margin: 0px; 
-	padding: 0px; 
-	width: @tree_width;
-	height: @tree_height;
-	overflow: hidden;
-	background-image: url('../images/tree-bg-plain.png'); 
-}
-
-li.talent {
-	position: absolute; 
-	padding: 0px; 
-	margin: 0px;
-	width: @talent_width; 
-	height: @talent_height; 
-	background-color: red; 
-}
-
-div.plus {
-	width: 
-}
-
-div.minus {
-
-}
-
-li.talent span {
-	display: none; 
-}
-
-li.rank_0 {
-	top: 410px;
-}
-
-li.rank_1 {
-	top: 345px;
-}
-
-li.rank_2 {
-	top: 280px;
-}
-
-li.rank_3 {
-	top: 215px;
-}
-
-li.rank_4 {
-	top: 150px;
-}
-
-li.rank_5 {
-	top: 85px;
-}
-
-li.rank_6 {
-	top: 20px;
-}
-
-li.position_0 {
-	left: 30px; 
-}
-
-li.position_1 {
-	left: 96px; 
-}
-
-li.position_2 {
-	left: 162px; 
-}
-
-li.position_3 {
-	left: 228px; 
-}
-

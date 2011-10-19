@@ -1,12 +1,24 @@
+/*---------------------------------------------------
+    LESS Elements 0.6
+  ---------------------------------------------------
+    A set of useful LESS mixins by Dmitry Fadeyev
+    Special thanks for mixin suggestions to:
+      Kris Van Herzeele,
+      Benoit Adam,
+      Portenart Emile-Victor,
+      Ryan Faerman
+
+    More info at: http://lesselements.com
+-----------------------------------------------------*/
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: #bfbfbf;
+  font: 8pt Verdana;
 }
-a {
-  color: #00B7FF;
+ul#builder li {
+  float: left;
+  margin-left: 20px;
 }
-ul.tree {
+ul#builder ul.tree {
   list-style-type: none;
   position: relative;
   float: left;
@@ -16,48 +28,97 @@ ul.tree {
   height: 490px;
   overflow: hidden;
   background-image: url('../images/tree-bg-plain.png');
+  color: #ffffff;
 }
-li.talent {
+ul#builder ul.tree li.talent {
+  font-size: 11px;
   position: absolute;
   padding: 0px;
   margin: 0px;
   width: 43px;
   height: 43px;
-  background-color: red;
+  cursor: pointer;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
 }
-li.talent span {
-  display: none;
+ul#builder ul.tree li.talent:hover {
+  background-color: #6ca1dd;
 }
-li.rank_0 {
+ul#builder ul.tree li.talent div.max-level {
+  position: absolute;
+  top: 38px;
+  right: 3px;
+  width: 19px;
+  height: 16px;
+  font-weight: bold;
+  text-align: center;
+  background-color: #0e233c;
+}
+ul#builder ul.tree li.talent div.current-level {
+  position: absolute;
+  top: 38px;
+  left: 3px;
+  width: 18px;
+  height: 16px;
+  font-weight: bold;
+  text-align: center;
+  background-color: #6ca1dd;
+}
+ul#builder ul.tree li.disabled {
+  border-top: solid 1px #0e233c;
+  border-left: solid 1px #0e233c;
+  border-right: solid 1px #0e233c;
+  border-bottom: solid 1px #0e233c;
+  background: #040b12;
+}
+ul#builder ul.tree li.active {
+  border-top: solid 1px #6ca1dd;
+  border-left: solid 1px #6ca1dd;
+  border-right: solid 1px #6ca1dd;
+  border-bottom: solid 1px #6ca1dd;
+  background: #4287d3;
+}
+ul#builder ul.tree li.inactive {
+  border-top: solid 1px #2661a3;
+  border-left: solid 1px #2661a3;
+  border-right: solid 1px #2661a3;
+  border-bottom: solid 1px #2661a3;
+  background: #1c487a;
+}
+ul#builder ul.tree li.rank_0 {
   top: 410px;
 }
-li.rank_1 {
+ul#builder ul.tree li.rank_1 {
   top: 345px;
 }
-li.rank_2 {
+ul#builder ul.tree li.rank_2 {
   top: 280px;
 }
-li.rank_3 {
+ul#builder ul.tree li.rank_3 {
   top: 215px;
 }
-li.rank_4 {
+ul#builder ul.tree li.rank_4 {
   top: 150px;
 }
-li.rank_5 {
+ul#builder ul.tree li.rank_5 {
   top: 85px;
 }
-li.rank_6 {
+ul#builder ul.tree li.rank_6 {
   top: 20px;
 }
-li.position_0 {
+ul#builder ul.tree li.position_0 {
   left: 30px;
 }
-li.position_1 {
+ul#builder ul.tree li.position_1 {
   left: 96px;
 }
-li.position_2 {
+ul#builder ul.tree li.position_2 {
   left: 162px;
 }
-li.position_3 {
+ul#builder ul.tree li.position_3 {
   left: 228px;
 }
