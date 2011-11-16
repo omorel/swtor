@@ -13,12 +13,17 @@
 body {
   padding: 50px;
   font: 8pt Verdana;
+  background-color: #000;
+  color: #fde87d;
 }
-ul#builder li {
+ul.builder li {
   float: left;
   margin-left: 20px;
 }
-ul#builder ul.tree {
+ul.builder li.first {
+  margin-left: 0px;
+}
+ul.builder ul.tree {
   list-style-type: none;
   position: relative;
   float: left;
@@ -26,17 +31,19 @@ ul#builder ul.tree {
   padding: 0px;
   width: 310px;
   height: 490px;
-  overflow: hidden;
   background-image: url('../images/tree-bg-plain.png');
   color: #ffffff;
 }
-ul#builder ul.tree li.talent {
+ul.builder ul.tree li.talent.disabled span.filter {
+  opacity: 0.7;
+}
+ul.builder ul.tree li.talent {
   font-size: 11px;
   position: absolute;
   padding: 0px;
   margin: 0px;
-  width: 43px;
-  height: 43px;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -45,12 +52,19 @@ ul#builder ul.tree li.talent {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
-ul#builder ul.tree li.talent:hover {
+ul.builder ul.tree li.talent span.filter {
+  width: 50px;
+  height: 50px;
+  display: block;
+  background-color: #000000;
+  opacity: 0;
+}
+ul.builder ul.tree li.talent:hover {
   background-color: #6ca1dd;
 }
-ul#builder ul.tree li.talent div.max-level {
+ul.builder ul.tree li.talent span.level span.max-level {
   position: absolute;
-  top: 38px;
+  top: 35px;
   right: 3px;
   width: 19px;
   height: 16px;
@@ -58,9 +72,9 @@ ul#builder ul.tree li.talent div.max-level {
   text-align: center;
   background-color: #0e233c;
 }
-ul#builder ul.tree li.talent div.current-level {
+ul.builder ul.tree li.talent span.level span.current-level {
   position: absolute;
-  top: 38px;
+  top: 35px;
   left: 3px;
   width: 18px;
   height: 16px;
@@ -68,57 +82,225 @@ ul#builder ul.tree li.talent div.current-level {
   text-align: center;
   background-color: #6ca1dd;
 }
-ul#builder ul.tree li.disabled {
+ul.builder ul.tree li.disabled {
   border-top: solid 1px #0e233c;
   border-left: solid 1px #0e233c;
   border-right: solid 1px #0e233c;
   border-bottom: solid 1px #0e233c;
-  background: #040b12;
+  background-color: #040b12;
 }
-ul#builder ul.tree li.active {
+ul.builder ul.tree li.disabled.hover {
+  border-top: solid 1px #2661a3;
+  border-left: solid 1px #2661a3;
+  border-right: solid 1px #2661a3;
+  border-bottom: solid 1px #2661a3;
+}
+ul.builder ul.tree li.disabled.hover span.filter {
+  opacity: 0.4;
+}
+ul.builder ul.tree li.active {
   border-top: solid 1px #6ca1dd;
   border-left: solid 1px #6ca1dd;
   border-right: solid 1px #6ca1dd;
   border-bottom: solid 1px #6ca1dd;
   background: #4287d3;
 }
-ul#builder ul.tree li.inactive {
+ul.builder ul.tree li.active span.filter {
+  opacity: 0.0;
+}
+ul.builder ul.tree li.inactive {
   border-top: solid 1px #2661a3;
   border-left: solid 1px #2661a3;
   border-right: solid 1px #2661a3;
   border-bottom: solid 1px #2661a3;
   background: #1c487a;
 }
-ul#builder ul.tree li.rank_0 {
+ul.builder ul.tree li.rank_0 {
   top: 410px;
 }
-ul#builder ul.tree li.rank_1 {
+ul.builder ul.tree li.rank_0 div.tooltip {
+  top: -122px;
+}
+ul.builder ul.tree li.rank_1 {
   top: 345px;
 }
-ul#builder ul.tree li.rank_2 {
+ul.builder ul.tree li.rank_1 div.tooltip {
+  top: -122px;
+}
+ul.builder ul.tree li.rank_2 {
   top: 280px;
 }
-ul#builder ul.tree li.rank_3 {
+ul.builder ul.tree li.rank_2 div.tooltip {
+  top: -122px;
+}
+ul.builder ul.tree li.rank_3 {
   top: 215px;
 }
-ul#builder ul.tree li.rank_4 {
+ul.builder ul.tree li.rank_3 div.tooltip {
+  top: -122px;
+}
+ul.builder ul.tree li.rank_4 {
   top: 150px;
 }
-ul#builder ul.tree li.rank_5 {
+ul.builder ul.tree li.rank_4 div.tooltip {
+  top: -122px;
+}
+ul.builder ul.tree li.rank_5 {
   top: 85px;
 }
-ul#builder ul.tree li.rank_6 {
+ul.builder ul.tree li.rank_5 div.tooltip {
+  top: -122px;
+}
+ul.builder ul.tree li.rank_6 {
   top: 20px;
 }
-ul#builder ul.tree li.position_0 {
+ul.builder ul.tree li.rank_6 div.tooltip {
+  top: -122px;
+}
+ul.builder ul.tree li.position_0 {
   left: 30px;
 }
-ul#builder ul.tree li.position_1 {
+ul.builder ul.tree li.position_0 div.tooltip {
+  left: 50px;
+}
+ul.builder ul.tree li.position_1 {
   left: 96px;
 }
-ul#builder ul.tree li.position_2 {
+ul.builder ul.tree li.position_1 div.tooltip {
+  left: 50px;
+}
+ul.builder ul.tree li.position_2 {
   left: 162px;
 }
-ul#builder ul.tree li.position_3 {
+ul.builder ul.tree li.position_2 div.tooltip {
+  left: 50px;
+}
+ul.builder ul.tree li.position_3 {
   left: 228px;
+}
+ul.builder ul.tree li.position_3 div.tooltip {
+  left: 50px;
+}
+ul.guardian ul.tree li.talent {
+  background-image: url('../images/talents/icons/guardian.jpg');
+  background-repeat: no-repeat;
+  /*&.pulse {
+				.icon-background();
+			}
+			&.felling-blow {
+				.icon-background();
+			}
+			&.singularity {
+				.icon-background();
+			}
+			&.unwavering-focus {
+				.icon-background();
+			}
+			&.gravity {
+				.icon-background();
+			}
+			&.shii-cho-mastery {
+				.icon-background();
+			}
+			&.agility-training {
+				.icon-background();
+			}
+			&.saber-buffet {
+				.icon-background();
+			}
+			&.focused-resonance {
+				.icon-background();
+			}
+			&.force-exhaustion {
+				.icon-background();
+			}
+			&.perseverance {
+				.icon-background();
+			}
+			&.defiance {
+				.icon-background();
+			}
+			&.burning-blade {
+				.icon-background();
+			}
+			&.shien-form {
+				.icon-background();
+			}
+			&.unremitting {
+				.icon-background();
+			}
+			&.gather-strength {
+				.icon-background();
+			}
+			&.narrowed-focus {
+				.icon-background();
+			}*/
+
+}
+ul.guardian ul.tree li.talent.windforce {
+  background-position: 0px -2050px;
+}
+ul.guardian ul.tree li.talent.dust-storm {
+  background-position: 0px -2000px;
+}
+ul.guardian ul.tree li.talent.victory-rush {
+  background-position: 0px -1950px;
+}
+ul.guardian ul.tree li.talent.single-saber-mastery {
+  background-position: 0px -3000px;
+}
+ul.guardian ul.tree li.talent.swelling-winds {
+  background-position: 0px -2950px;
+}
+ul.guardian ul.tree li.talent.improved-sundering-strike {
+  background-position: 0px -2900px;
+}
+ul.guardian ul.tree li.talent.second-wind {
+  background-position: 0px -3850px;
+}
+ul.guardian ul.tree li.talent.zephyr {
+  background-position: 0px -3800px;
+}
+ul.guardian ul.tree li.talent.visionary {
+  background-position: 0px -3750px;
+}
+ul.guardian ul.tree li.talent.accuracy {
+  background-position: 0px -2850px;
+}
+ul.guardian ul.tree li.talent.swift-slash {
+  background-position: 0px -350px;
+}
+ul.guardian ul.tree li.talent.saber-strength {
+  background-position: 0px -500px;
+}
+ul.guardian ul.tree li.talent.zealous-leep {
+  background-position: 0px -3600px;
+}
+ul.guardian ul.tree li.talent.inner-focus {
+  background-position: 0px -3550px;
+}
+span.tooltip {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border-top: solid 1px #6ca1dd;
+  border-left: solid 1px #6ca1dd;
+  border-right: solid 1px #6ca1dd;
+  border-bottom: solid 1px #6ca1dd;
+  display: none;
+  padding: 5px;
+  height: 100px;
+  width: 220px;
+  background-color: #000000;
+  overflow: hidden;
+  z-index: 1000;
+  position: absolute;
+  top: -112px;
+  left: 50px;
+}
+div.clear {
+  clear: both;
 }

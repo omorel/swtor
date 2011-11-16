@@ -18,7 +18,7 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(express.compiler({ src: __dirname + '/public', enable: ['less'] }));
   app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
+  app.use(express['static'](__dirname + '/public'));
 });
 
 app.configure('development', function(){
@@ -48,7 +48,7 @@ app.get('/', function(req, res){
 
 app.get('/ac/:name', function(req, res, next) {
 	advancedClassProvider.findByInternalName(req.params.name, function(error, ac_element){
-		classProvider.findByInternalName(ac_element.class, function(error, class_element) {
+		classProvider.findByInternalName(ac_element['class'], function(error, class_element) {
 			// Variables
 			var data = {}, i, j; 
 			
@@ -70,16 +70,16 @@ app.get('/ac/:name', function(req, res, next) {
 				data[ac_element.trees[i].internal] = ac_element.trees[i]; 
 			}
 			
-			console.log(data);
+			console.log(ac_element);
 			
 			res.render('classes/show.jade', { 'locals': {
-	        'title': ac_element.name,
-	        'ac': ac_element, 
+				'title': ac_element.name,
+					'ac': ac_element, 
 					'class': class_element, 
-					'data': data, 
-	    	}
+					'data': data
+				}
 			});			
-		}) 
+		});
 	}); 
 }); 
 
@@ -87,14 +87,14 @@ app.get('/advancedclass/new', function(req, res){
 	res.render('classes/edit.jade', { locals: {
 			title: 'New Class'
 		}
-	})
+	});
 }); 
 
 app.post('/advancedclass/new', function(req, res) {
 	advancedClassProvider.save({
-		'name': 					req.param('name'), 
-		'internal_name': 	req.param('internal'), 
-		'class': 					req.param('class')
+		'name': req.param('name'), 
+		'internal_name': req.param('internal'), 
+		'class': req.param('class')
 	}, function(error, docs) {
 		res.redirect('/'); 
 	}); 

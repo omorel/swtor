@@ -2,9 +2,11 @@
 html
   head
     title= title
+    link(rel='stylesheet', href='/stylesheets/reset.css')    
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='/javascripts/modernizr-2.0.6.js')    
     script(src='/javascripts/jquery-1.6.4.min.js')
+    script(src='/javascripts/jquery.hoverIntent.min.js')   
     script(src='/javascripts/builder/builder.js')
     script(type='text/javascript')
       var data = !{JSON.stringify(data)};
@@ -24,8 +26,17 @@ html
           points_by_tree: {}, 
           advanced_class: data,
         }); 
-        
-        swtor.enable_talents();			  
-        swtor.add_listeners();
+                
+        jQuery('#builder li.talent').hoverIntent({
+          'over': function() {
+            jQuery(this).children('span.tooltip').show(); 
+            jQuery(this).addClass('hover'); 
+          }, 
+          
+          'out': function() {
+            jQuery(this).children('span.tooltip').hide(); 
+            jQuery(this).removeClass('hover');          
+          }
+        }); 
       });
   body!= body

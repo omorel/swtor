@@ -1,20 +1,31 @@
 h1 #{title} (#{class.name})
 
-ul#builder 
-	li 
+ul#builder(class='builder ' + ac.internal_name) 
+	li.first
 		ul(class=class.common_tree.internal + ' tree')
 			- for (var i in class.common_tree.talents)
 				li(class=class.common_tree.talents[i].internal + ' talent rank_'+class.common_tree.talents[i].level + ' position_' + class.common_tree.talents[i].position + ' disabled') 
-					div.plus 
-					div.minus 
-					div.current-level 0
-					div.max-level #{class.common_tree.talents[i].level_max}
+					span.filter
+					span.level
+						span.current-level 0
+						span.separator
+						span.max-level #{class.common_tree.talents[i].level_max}
+					span.tooltip 
+						h3 #{class.common_tree.talents[i].name}
+						p Text
+
 	- for (var i in ac.trees) 
 		li
 			ul(class=ac.trees[i].internal + ' tree')
 				- for (var j in ac.trees[i].talents)
 					li(class=ac.trees[i].talents[j].internal + ' talent rank_' + ac.trees[i].talents[j].level + ' position_' + ac.trees[i].talents[j].position + ' disabled') 
-						div.plus 
-						div.minus 
-						div.current-level 0
-						div.max-level #{ac.trees[i].talents[j].level_max}      
+						span.filter
+						span.level
+							span.current-level 0
+							span.separator
+							span.max-level #{ac.trees[i].talents[j].level_max}     
+						span.tooltip 
+							h3=ac.trees[i].talents[j].name
+							p Text
+
+div.clear

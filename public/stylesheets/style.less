@@ -1,27 +1,38 @@
 // Imports 
-@import "/public/stylesheets/elements.less"; 
+@import "/public/stylesheets/elements.less";
+//@import "/public/stylesheets/classes.less";
 
 @tree-width: 310px; 
 @tree-height: 490px; 
 
 // Talents
-@talent-width: 43px; 
-@talent-height: 43px; 
+@talent-width: 50px; 
+@talent-height: 50px; 
 
 @talent-inactive-color: #2661a3;
 @talent-active-color: lighten(@talent-inactive-color, 25%);
 @talent-disabled-color: darken(@talent-inactive-color, 25%);
 
+// Tooltips 
+@tooltips-height: 100px; 
+@tooltips-width: 220px;
+
 body {
   padding: 50px;
   font: 8pt Verdana;
+	background-color: #000;
+	color: #fde87d;
 }
 
-ul#builder {
+ul.builder {
 	
 	li {
 		float: left;
 		margin-left: 20px;
+		
+		&.first {
+			margin-left: 0px;
+		}
 	}
 	
 	ul.tree {
@@ -32,9 +43,16 @@ ul#builder {
 		padding: 0px; 
 		width: @tree-width;
 		height: @tree-height;
-		overflow: hidden;
 		background-image: url('../images/tree-bg-plain.png'); 
 		color: #ffffff;
+	
+		li.talent.disabled {
+			span {
+				&.filter {
+					opacity: 0.7
+				}
+			}			
+		}
 	
 		li.talent {
 			font-size: 11px;
@@ -45,103 +63,290 @@ ul#builder {
 			height: @talent-height; 
 			cursor: pointer;		
 			.rounded();
-
+			
 			span {
+				
+				&.filter {
+					width: @talent-width;
+					height: @talent-height;
+					display: block;					
+					background-color: #000000;
+					opacity: 0.0
+				}
 			}
 		
 			&:hover {
 				background-color: @talent-active-color;
 			}
 		
-			div.max-level {
-				position: absolute; 
-				top: @talent-height - 5px; 
-				right: 3px;
-				width: 19px; 
-				height: 16px;						
-				font-weight: bold; 
-				text-align: center; 
-				background-color: @talent-disabled-color;
-			}
+			span.level {
+				span.max-level {
+					position: absolute; 
+					top: @talent-height - 15px; 
+					right: 3px;
+					width: 19px; 
+					height: 16px;						
+					font-weight: bold; 
+					text-align: center; 
+					background-color: @talent-disabled-color;
+				}
 		
-			div.current-level {
-				position: absolute; 
-				top: @talent-height - 5px; 
-				left: 3px;
-				width: 18px; 			
-				height: 16px;
-				font-weight: bold; 				
-				text-align: center; 			
-				background-color: @talent-active-color; 		
+				span.current-level {
+					position: absolute; 
+					top: @talent-height - 15px; 
+					left: 3px;
+					width: 18px; 			
+					height: 16px;
+					font-weight: bold; 				
+					text-align: center; 			
+					background-color: @talent-active-color; 		
+				}
 			}
 		}
 	
 		li.disabled {
 			.bordered(@talent-disabled-color, @talent-disabled-color, @talent-disabled-color, @talent-disabled-color); 
-			background: darken(@talent-disabled-color, 10%); 
+			background-color: darken(@talent-disabled-color, 10%); 
+			
+			&.hover {
+				.bordered(@talent-inactive-color, @talent-inactive-color, @talent-inactive-color, @talent-inactive-color); 
+				span.filter {
+					opacity: 0.4;
+				}
+			}
 		}
 	
 		li.active {
 			.bordered(@talent-active-color, @talent-active-color, @talent-active-color, @talent-active-color); 
 			background: darken(@talent-active-color, 10%);		
+
+			span.filter {
+				opacity: 0.0;
+			}
 		}
 	
 		li.inactive {
 			.bordered(@talent-inactive-color, @talent-inactive-color, @talent-inactive-color, @talent-inactive-color); 
 			background: darken(@talent-inactive-color, 10%);			
 		}
-	
-		div.plus {
-		}
-
-		div.minus {
-		}	
-	
+		
 
 
 		li.rank_0 {
 			top: 410px;
+			
+			div.tooltip {
+				top: -@tooltips-height - 22px; 
+			}
 		}
 
 		li.rank_1 {
 			top: 345px;
+			
+			div.tooltip {
+				top: -@tooltips-height - 22px; 
+			}			
 		}
 
 		li.rank_2 {
 			top: 280px;
+			
+			div.tooltip {
+				top: -@tooltips-height - 22px; 
+			}
 		}
 
 		li.rank_3 {
 			top: 215px;
+			
+			div.tooltip {
+				top: -@tooltips-height - 22px; 
+			}
 		}
 
 		li.rank_4 {
 			top: 150px;
+			
+			div.tooltip {
+				top: -@tooltips-height - 22px; 
+			}
 		}
 
 		li.rank_5 {
 			top: 85px;
+			
+			div.tooltip {
+				top: -@tooltips-height - 22px; 
+			}
 		}
 
 		li.rank_6 {
 			top: 20px;
+			
+			div.tooltip {
+				top: -@tooltips-height - 22px; 
+			}
 		}
 
 		li.position_0 {
 			left: 30px; 
+			
+			div.tooltip {
+				left: 50px; 
+			}
 		}
 
 		li.position_1 {
 			left: 96px; 
+			
+			div.tooltip {
+				left: 50px; 
+			}			
 		}
 
 		li.position_2 {
 			left: 162px; 
+			
+			div.tooltip {
+				left: 50px; 
+			}			
 		}
 
 		li.position_3 {
 			left: 228px; 
+			
+			div.tooltip {
+				left: 50px; 
+			}			
 		}	
 	}
+}
 
+.icon-background(@position) {
+	background-position: 0px -@position*@talent-height;
+}
+
+ul.guardian {
+	ul.tree {
+		li.talent {
+			background-image: url('../images/talents/icons/guardian.jpg'); 
+			background-repeat: no-repeat;
+			
+			&.windforce {
+				.icon-background(41);
+			}
+			&.dust-storm {
+				.icon-background(40);
+			}
+			&.victory-rush {
+				.icon-background(39);
+			}
+			&.single-saber-mastery {
+				.icon-background(60);
+			}
+			&.swelling-winds {
+				.icon-background(59);
+			}
+			&.improved-sundering-strike {
+				.icon-background(58);
+			}
+			&.second-wind {
+				.icon-background(77);
+			}
+			&.zephyr {
+				.icon-background(76);
+			}
+			&.visionary {
+				.icon-background(75);
+			}
+			&.accuracy {
+				.icon-background(57); 
+			}
+			&.swift-slash {
+				.icon-background(7);
+			}
+			&.saber-strength {
+				.icon-background(10);
+			}
+			&.zealous-leep {
+				.icon-background(72);
+			}
+			&.inner-focus {
+				.icon-background(71);
+			}
+			&.pulse {
+				.icon-background(70);
+			}
+			&.felling-blow {
+				.icon-background(69);
+			}
+			&.singularity {
+				.icon-background(68);
+			}
+			&.unwavering-focus {
+				.icon-background(67);
+			}
+			&.gravity {
+				.icon-background(66);
+			}
+			&.shii-cho-mastery {
+				.icon-background(65);
+			}
+			&.agility-training {
+				.icon-background(64);
+			}
+			&.saber-buffet {
+				.icon-background(63);
+			}
+			&.focused-resonance {
+				.icon-background(62);
+			}
+			&.force-exhaustion {
+//				.icon-background();
+			}
+			&.perseverance {
+				.icon-background(56);
+			}
+			&.defiance {
+				.icon-background(55);
+			}
+			&.burning-blade {
+				.icon-background(54);
+			}
+			&.shien-form {
+				.icon-background(53);
+			}
+			&.unremitting {
+				.icon-background(52);
+			}
+			&.gather-strength {
+				.icon-background();
+			}
+			&.narrowed-focus {
+				.icon-background();
+			}
+
+		}
+	}
+}
+
+
+
+span.tooltip {
+	.rounded();
+	.bordered(@talent-active-color,@talent-active-color,@talent-active-color,@talent-active-color);
+	display: none;
+	padding: 5px;
+	height: @tooltips-height; 
+	width: @tooltips-width; 
+	background-color: #000000;
+	overflow: hidden; 
+	z-index: 1000;
+	position: absolute;	
+	top: -@tooltips-height - 12px;
+	left: @talent-width;
+}
+
+div.clear {
+	clear: both;
 }

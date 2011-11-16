@@ -54,10 +54,12 @@ AdvancedClassProvider.prototype.findByInternalName = function(internal_name, cal
 			}); 
 		}
 	}); 
-}
+};
 
 AdvancedClassProvider.prototype.save = function(classes, callback) {
 	this.getCollection(function(error, classes_collection) {
+		var aclass; 
+		
 		if( error ) {
 			callback(error); 
 		}
@@ -67,8 +69,8 @@ AdvancedClassProvider.prototype.save = function(classes, callback) {
 			}
 			
 			for( var i = 0; i < classes.length; i++) {
-				class = classes[i]; 
-				class.updated_at = new Date(); 
+				aclass = classes[i]; 
+				aclass.updated_at = new Date(); 
 			}
 			
 			classes_collection.insert(classes, function() {
